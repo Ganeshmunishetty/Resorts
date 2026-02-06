@@ -1,6 +1,10 @@
 package com.example.resorts.entity.enums;
 
 public enum PropertyStatus {
-	Active,
-	Inactive
+	ACTIVE,
+	INACTIVE;
+	
+	public static PropertyStatus from(String value) {
+        return PropertyStatus.valueOf(value.toUpperCase());
+    }
 }

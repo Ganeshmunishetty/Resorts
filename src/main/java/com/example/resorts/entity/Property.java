@@ -37,13 +37,14 @@ public class Property {
 	private String name;
 	private String location;
 	@Column(length = 2000)
-	private String desccription;
+	private String description;
 	private String amenities;
 	@Enumerated(EnumType.STRING)
+	@Column(name = "status")
 	private PropertyStatus status;
 	private LocalDateTime createdAt;
 	
-	@OneToMany(mappedBy="Property",cascade=CascadeType.ALL,orphanRemoval=true)
+	@OneToMany(mappedBy="property",cascade=CascadeType.ALL,orphanRemoval=true)
 	private List<PropertyImage> images;
 	
 	
