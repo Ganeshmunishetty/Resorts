@@ -67,11 +67,23 @@ public class PropertyServiceImpl implements PropertyService {
 
     // ===== MAPPER =====
     private PropertyResponseDto mapToResponse(Property property) {
+
         PropertyResponseDto res = new PropertyResponseDto();
         res.setId(property.getId());
         res.setName(property.getName());
         res.setLocation(property.getLocation());
         res.setStatus(property.getStatus());
+
+        if (property.getImages() != null) {
+            res.setImages(
+                property.getImages()
+                        .stream()
+                        .map(img -> img.getImageUrl())
+                        .toList()
+            );
+        }
+
         return res;
     }
+
 }

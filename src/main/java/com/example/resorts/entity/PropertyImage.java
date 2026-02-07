@@ -1,5 +1,7 @@
 package com.example.resorts.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -30,7 +32,11 @@ public class PropertyImage {
 	    @Column(nullable = false)
 	    private String imageUrl;
 
+
 	    @ManyToOne(fetch = FetchType.LAZY)
 	    @JoinColumn(name = "property_id")
+	    @JsonBackReference
 	    private Property property;
+ 
+	    
 }

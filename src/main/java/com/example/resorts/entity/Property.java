@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.example.resorts.entity.enums.EnquiryStatus;
 import com.example.resorts.entity.enums.PropertyStatus;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -44,9 +45,13 @@ public class Property {
 	private PropertyStatus status;
 	private LocalDateTime createdAt;
 	
-	@OneToMany(mappedBy="property",cascade=CascadeType.ALL,orphanRemoval=true)
-	private List<PropertyImage> images;
-	
+	@OneToMany(
+		    mappedBy = "property",
+		    cascade = CascadeType.ALL,
+		    orphanRemoval = true
+		)
+		@JsonManagedReference
+		private List<PropertyImage> images;
 	
 	
 }

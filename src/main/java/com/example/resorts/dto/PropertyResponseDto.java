@@ -1,5 +1,7 @@
 package com.example.resorts.dto;
 
+import java.util.List;
+
 import com.example.resorts.entity.enums.PropertyStatus;
 
 public class PropertyResponseDto {
@@ -8,6 +10,8 @@ public class PropertyResponseDto {
 	private String name;
 	private String location;
 	private PropertyStatus status;
+	
+	private List<String> images;
 
 	public Long getId() {
 		return id;
@@ -41,6 +45,15 @@ public class PropertyResponseDto {
 		this.status = status;
 	}
 
+	public List<String> getImages() {
+		return images;
+	}
+
+	public void setImages(List<String> images) {
+		this.images = images;
+	}
+
+	
 	// getters & setters
 
 }
