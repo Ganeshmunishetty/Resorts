@@ -10,7 +10,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 public class SecurityConfig {
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http
             // Disable CSRF (needed for APIs)

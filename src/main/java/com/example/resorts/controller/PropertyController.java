@@ -1,10 +1,15 @@
 package com.example.resorts.controller;
 
-import com.example.resorts.entity.Property;
-import com.example.resorts.service.PropertyService;
+import java.util.List;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import com.example.resorts.dto.PropertyRequestDto;
+import com.example.resorts.dto.PropertyResponseDto;
+import com.example.resorts.service.PropertyService;
+
 
 @RestController
 @RequestMapping("/api/properties")
@@ -16,15 +21,18 @@ public class PropertyController {
         this.propertyService = propertyService;
     }
 
-    // Get all active properties (for customers)
     @GetMapping
-    public List<Property> getAllProperties() {
-        return propertyService.getActiveProperty();
+    public ResponseEntity<List<PropertyResponseDto>> getAllProperties() {
+        return ResponseEntity.ok(propertyService.getAllActiveProperties());
     }
 
-    // Get property by ID
-    @GetMapping("/{id}")
-    public Property getPropertyById(@PathVariable Long id) {
-        return propertyService.getPropertyById(id);
+    @PostMapping
+    public ResponseEntity<PropertyResponseDto> createProperty(
+            @RequestBody PropertyRequestDto dto) {
+
+        return new ResponseEntity<>(
+                propertyService.createProperty(dto),
+                HttpStatus.CREATED
+        );
     }
 }
