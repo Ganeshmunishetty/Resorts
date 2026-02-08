@@ -12,11 +12,11 @@ import com.example.resorts.service.PropertyImageService;
 
 @RestController
 @RequestMapping("/api")
-public class a {
+public class PropertyImageController {
 
     private final PropertyImageService imageService;
 
-    public a(PropertyImageService imageService) {
+    public PropertyImageController(PropertyImageService imageService) {
         this.imageService = imageService;
     }
 

@@ -10,7 +10,15 @@ public class PropertyResponseDto {
 	private String name;
 	private String location;
 	private PropertyStatus status;
-	
+	private List<String> amenities;
+	public List<String> getAmenities() {
+		return amenities;
+	}
+
+	public void setAmenities(List<String> amenities) {
+		this.amenities = amenities;
+	}
+
 	private List<String> images;
 
 	public Long getId() {
@@ -52,6 +60,8 @@ public class PropertyResponseDto {
 	public void setImages(List<String> images) {
 		this.images = images;
 	}
+
+	
 
 	
 	// getters & setters

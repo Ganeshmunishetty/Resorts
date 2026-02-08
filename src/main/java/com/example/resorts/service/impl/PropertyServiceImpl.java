@@ -74,6 +74,7 @@ public class PropertyServiceImpl implements PropertyService {
         res.setLocation(property.getLocation());
         res.setStatus(property.getStatus());
 
+        // images
         if (property.getImages() != null) {
             res.setImages(
                 property.getImages()
@@ -83,7 +84,11 @@ public class PropertyServiceImpl implements PropertyService {
             );
         }
 
+        // amenities ✅
+        res.setAmenities(property.getAmenities());
+
         return res;
     }
+
 
 }

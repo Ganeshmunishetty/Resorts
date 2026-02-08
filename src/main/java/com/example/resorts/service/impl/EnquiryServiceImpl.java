@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.example.resorts.entity.Enquiry;
 import com.example.resorts.entity.Property;
 import com.example.resorts.entity.enums.EnquiryStatus;
+import com.example.resorts.exception.ResourceNotFoundException;
 import com.example.resorts.repository.EnquiryRepository;
 import com.example.resorts.repository.PropertyRepository;
 import com.example.resorts.service.EnquiryService;
@@ -35,7 +36,7 @@ public class EnquiryServiceImpl implements EnquiryService{
 	 @Override
 	    public Enquiry updateQuotedPrice(Long enquiryId, Double price) {
 	        Enquiry enquiry = enquiryRepository.findById(enquiryId)
-	                .orElseThrow(() -> new RuntimeException("Enquiry not found"));
+	                .orElseThrow(() -> new ResourceNotFoundException("Enquiry not found"));
 
 	        enquiry.setQuotedPrice(BigDecimal.valueOf(price));
 	        enquiry.setStatus(EnquiryStatus.QUOTED);

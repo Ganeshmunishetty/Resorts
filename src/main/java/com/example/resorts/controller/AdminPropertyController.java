@@ -1,8 +1,11 @@
 package com.example.resorts.controller;
 
-
-import com.example.resorts.entity.Property;
+import com.example.resorts.dto.PropertyRequestDto;
+import com.example.resorts.dto.PropertyResponseDto;
 import com.example.resorts.service.PropertyService;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -15,9 +18,14 @@ public class AdminPropertyController {
         this.propertyService = propertyService;
     }
 
-    // Create new property (admin only)
+    // ADMIN: Create new property
     @PostMapping
-    public Property createProperty(@RequestBody Property property) {
-        return propertyService.createProperty(property);
+    public ResponseEntity<PropertyResponseDto> createProperty(
+            @RequestBody PropertyRequestDto dto) {
+
+        return new ResponseEntity<>(
+                propertyService.createProperty(dto),
+                HttpStatus.CREATED
+        );
     }
 }

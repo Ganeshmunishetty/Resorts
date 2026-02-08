@@ -15,6 +15,16 @@ public class PropertyRequestDto {
     private Long ownerId;
 
     private String description;
+    
+    private String amenities; 
+
+	public String getAmenities() {
+		return amenities;
+	}
+
+	public void setAmenities(String amenities) {
+		this.amenities = amenities;
+	}
 
 	public String getName() {
 		return name;
@@ -47,6 +57,8 @@ public class PropertyRequestDto {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	
 
     // getters & setters
     
